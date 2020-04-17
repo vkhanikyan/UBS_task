@@ -42,11 +42,19 @@ public class ShoppingBasket {
         this.strategies.add(discountStrategy);
     }
 
+    /**
+     * add product to the basket. If we have the product in the basket it will increase only the quantity
+     */
     public void addProduct(String product, Double quantity) {
         if (product == null || product.isEmpty() || !PRODUCT_PRICE_MAP.containsKey(product)) {
             throw new IllegalArgumentException("Wrong product");
         }
-        productQuantity.put(product, quantity);
+
+        if (productQuantity.containsKey(product)){
+            productQuantity.put(product, productQuantity.get(product) + quantity);
+        }else{
+            productQuantity.put(product, quantity);
+        }
     }
 
     public BigDecimal calculateTotal() {
