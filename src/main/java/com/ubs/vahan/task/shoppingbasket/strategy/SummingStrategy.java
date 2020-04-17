@@ -9,7 +9,7 @@ public class SummingStrategy implements ShoppingBasketStrategy {
     @Override
     public void calculateTotal(Map<String, Double> productCount, BigDecimalWrapper result) {
         result.number = productCount.entrySet().stream()
-                .map(o -> PRODUCT_PRICE_MAP.get(o.getKey()).multiply(new BigDecimal(o.getValue())))
-                .reduce((o1, o2) -> new BigDecimal(0).add(o2)).get();
+                .map(o -> PRODUCT_PRICE_MAP.get(o.getKey()).multiply(BigDecimal.valueOf(o.getValue())))
+                .reduce((o1, o2) -> BigDecimal.valueOf(0.0).add(o2)).get();
     }
 }
