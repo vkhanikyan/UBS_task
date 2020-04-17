@@ -23,15 +23,15 @@ import java.util.Set;
 public class ShoppingBasket {
 
     // this is our database for products and prices
-    public static Map<String, BigDecimal> PRODUCT_PRICE_MAP = new HashMap();
+    public static final Map<String, BigDecimal> PRODUCT_PRICE_MAP = new HashMap();
 
     static {
         PRODUCT_PRICE_MAP.put("Orange", BigDecimal.valueOf(15.9));
         PRODUCT_PRICE_MAP.put("Apple", BigDecimal.valueOf(20.6));
     }
 
-    private Map<String, Double> productQuantity = new HashMap();
-    private Set<ShoppingBasketStrategy> strategies = new HashSet();
+    private final Map<String, Double> productQuantity = new HashMap();
+    private final Set<ShoppingBasketStrategy> strategies = new HashSet();
 
     public ShoppingBasket() {
         this.strategies.add(new SummingStrategy());

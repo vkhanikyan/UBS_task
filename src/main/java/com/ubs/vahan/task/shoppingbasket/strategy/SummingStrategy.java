@@ -10,6 +10,6 @@ public class SummingStrategy implements ShoppingBasketStrategy {
     public void calculateTotal(Map<String, Double> productCount, BigDecimalWrapper result) {
         result.number = productCount.entrySet().stream()
                 .map(o -> PRODUCT_PRICE_MAP.get(o.getKey()).multiply(BigDecimal.valueOf(o.getValue())))
-                .reduce((o1, o2) -> BigDecimal.valueOf(0.0).add(o2)).get();
+                .reduce((o1, o2) -> BigDecimal.valueOf(0.0).add(o2)).orElse(BigDecimal.valueOf(0));
     }
 }
